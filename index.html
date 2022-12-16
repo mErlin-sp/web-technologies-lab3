@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab6. Oleksandr Popov. IT-z01</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.2.js"
+            integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="container">
+    <div id="controls">
+        <button id="get-user-button" type="button">Get User</button>
+    </div>
+    <div id="users"></div>
+</div>
+<script>
+    $(document).ready(function () {
+        console.log('ready')
+
+        function getUser() {
+            console.log('get user')
+
+            fetch('https://randomuser.me/api')
+                .then((response) => response.json())
+                .then(function (json) {
+                    console.log(json['results'][0])
+
+                    const imageSrc = json['results'][0]['picture']['large']
+                    const cell = json['results'][0]['cell']
+                    const city = json['results'][0]['location']['city']
+                    const country = json['results'][0]['location']['country']
+                    const postcode = json['results'][0]['location']['postcode']
+
+
+                    const div = `
+                        <div class="user">
+                            <img src="${imageSrc}" class="user-img" alt="Image loaded from randomuser.me/api">
+                            <p class="user-item">Cell: ${cell}</p>
+                            <p class="user-item">City: ${city}</p>
+                            <p class="user-item">Country: ${country}</p>
+                            <p class="user-item">Postcode: ${postcode}</p>
+                        </div>`
+
+                    $('#users').append(div)
+                })
+        }
+
+        $('#get-user-button').click(getUser)
+    })
+</script>
+</body>
+</html>
