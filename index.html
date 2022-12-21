@@ -6,17 +6,10 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.2.js"
             integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
-</head>
-<body>
-<div id="container">
-    <div id="controls">
-        <button id="get-user-button" type="button">Get User</button>
-    </div>
-    <div id="users"></div>
-</div>
-<script>
-    $(document).ready(function () {
-        console.log('ready')
+    <script>
+        $(document).ready(function () {
+            $('#get-user-button').click(getUser)
+        })
 
         function getUser() {
             console.log('get user')
@@ -45,9 +38,15 @@
                     $('#users').append(div)
                 })
         }
+    </script>
+</head>
+<body>
+<div id="container">
+    <div id="controls">
+        <button id="get-user-button" type="button">Get User</button>
+    </div>
+    <div id="users"></div>
+</div>
 
-        $('#get-user-button').click(getUser)
-    })
-</script>
 </body>
 </html>
