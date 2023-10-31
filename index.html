@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab6. Oleksandr Popov. IT-z01</title>
+    <title>Lab3. Oleksandr Popov. IT-z01. Variant 24 (4)</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.2.js"
             integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
@@ -20,19 +20,19 @@
                     console.log(json['results'][0])
 
                     const imageSrc = json['results'][0]['picture']['large']
-                    const cell = json['results'][0]['cell']
+                    const name = json['results'][0]['name']['first'] + ' ' + json['results'][0]['name']['last']
                     const city = json['results'][0]['location']['city']
-                    const country = json['results'][0]['location']['country']
                     const postcode = json['results'][0]['location']['postcode']
+                    const phone = json['results'][0]['phone']
 
 
                     const div = `
                         <div class="user">
                             <img src="${imageSrc}" class="user-img" alt="Image loaded from randomuser.me/api">
-                            <p class="user-item">Cell: ${cell}</p>
+                            <p class="user-item">Name: ${name}</p>
                             <p class="user-item">City: ${city}</p>
-                            <p class="user-item">Country: ${country}</p>
                             <p class="user-item">Postcode: ${postcode}</p>
+                            <p class="user-item">Phone: ${phone}</p>
                         </div>`
 
                     $('#users').append(div)
